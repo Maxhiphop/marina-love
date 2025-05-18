@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Марина — моя любовь</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      background: radial-gradient(circle at center, #2a002a, #0d001a);
+      color: #ffe6f0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff80bf, #cc0066);
+      padding: 80px 20px;
+      text-align: center;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 10px 30px rgba(255, 128, 191, 0.4);
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3.5em;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .bubble {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background-color: rgba(255, 128, 191, 0.3);
+      border: 2px solid #ffb3d9;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      font-size: 1em;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: moveBubble linear infinite alternate;
+      font-weight: 300;
+    }
+
+    .bubble:hover {
+      background-color: rgba(255, 128, 191, 0.6);
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #ff99cc;
+    }
+
+    @keyframes moveBubble {
+      0%   { transform: translate(0, 0); }
+      100% { transform: translate(var(--tx), var(--ty)); }
+    }
+
+    .button-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    button {
+      background-color: #ff66a3;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 128, 191, 0.4);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff3385;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #4d0033;
+      color: #ffb3d9;
+      font-size: 1.1em;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      box-shadow: 0 -6px 20px rgba(255, 128, 191, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    a {
+      color: #ffccff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <button onclick="addBubble()">Добавить сердечко</button>
+  </div>
+
+  <header>
+    <h1>Марина — свет моего сердца</h1>
+  </header>
+
+
+  <script>
+    const texts = [
+      "Марина — удивительная девушка с добрым сердцем и прекрасной душой.",
+      "Её улыбка — как рассвет, её голос — как музыка.",
+      "Прогулки под звёздами и разговоры до утра — навсегда в сердце.",
+      "Мечтаю пить чай с тобой и стареть рядом.",
+      "Ты — мой свет, мой смысл, моя награда.",
+      "Любовь — моё дыхание, мой путь, моя жизнь."
+    ];
+
+    function addBubble() {
+      const index = Math.floor(Math.random() * texts.length);
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      const x = Math.random() * 90;
+      const y = Math.random() * 90;
+      const tx = (Math.random() * 30 - 15) + 'vw';
+      const ty = (Math.random() * 30 - 15) + 'vh';
+
+      bubble.style.top = x + 'vh';
+      bubble.style.left = y + 'vw';
+      bubble.style.setProperty('--tx', tx);
+      bubble.style.setProperty('--ty', ty);
+      bubble.style.animationDuration = (15 + Math.random() * 15) + 's';
+
+      bubble.innerHTML = '♡';
+      bubble.onclick = () => {
+        bubble.innerHTML = texts[index];
+      };
+
+      document.body.appendChild(bubble);
+    }
+  </script>
+</body>
+</html>
