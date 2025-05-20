@@ -12,21 +12,10 @@
       width: 100%;
       height: 100%;
       font-family: 'Roboto', sans-serif;
-      background: url('/mnt/data/22071fd2-ed53-4052-8eda-561493df0ab6.png') center center / cover no-repeat fixed;
+      background-color: #ffcce6;
       color: #ffe6f0;
       overflow-x: hidden;
       position: relative;
-    }
-
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 0;
     }
 
     header, footer, .button-container, .bubble {
@@ -54,13 +43,13 @@
       position: absolute;
       width: 90px;
       height: 90px;
-      background-color: rgba(255, 128, 191, 0.3);
+      background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #ffb3d9;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #fff;
+      color: #000;
       text-align: center;
       font-size: 0.9em;
       padding: 10px;
@@ -72,7 +61,7 @@
     }
 
     .bubble:hover {
-      background-color: rgba(255, 128, 191, 0.6);
+      background-color: rgba(255, 255, 255, 0.8);
       transform: scale(1.05);
       box-shadow: 0 0 12px #ff99cc;
     }
@@ -149,6 +138,7 @@
   <header>
     <h1>Марина — свет моего сердца</h1>
   </header>
+
 
   <script>
     const texts = [
@@ -250,8 +240,8 @@
       "Ты — мой ежедневный повод сказать Я ТЕБЯ ЛЮБЛЮ.",
       "Ты — моя навсегда."
     ];
-
-    function addBubble() {
+    
+ function addBubble() {
       const index = Math.floor(Math.random() * texts.length);
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
@@ -269,6 +259,7 @@
       bubble.innerHTML = '♡';
       bubble.onclick = () => {
         bubble.innerHTML = texts[index];
+        bubble.style.color = '#000';
       };
 
       document.body.appendChild(bubble);
